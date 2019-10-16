@@ -115,6 +115,11 @@ class OpenIDConnectClient
     private $httpProxy;
 
     /**
+     * @var add this property for using with component in octobercms
+     */
+    private $state;
+
+    /**
      * @var string full system path to the SSL certificate
      */
     private $certPath;
@@ -601,6 +606,11 @@ class OpenIDConnectClient
 
         // State essentially acts as a session key for OIDC
         $state = $this->setState($this->generateRandString());
+
+        // modify for using with component in Octobercms
+        if ($this->checkExistState()) {
+            $state = $this->setState($this->state);
+        }
 
         $auth_params = array_merge($this->authParams, array(
             'response_type' => $response_type,
@@ -1507,7 +1517,13 @@ class OpenIDConnectClient
      * @return string
      */
     protected function setNonce($nonce) {
-        $this->setSessionKey('openid_connect_nonce', $nonce);
+        // modify for using with component in octoberms
+        if ($this->checkExistState()) {
+            $this->setSessionKey($this->state . '.openid_connect_nonce', $nonce);
+        } else {
+            $this->setSessionKey('openid_connect_nonce', $nonce);
+        }
+
         return $nonce;
     }
 
@@ -1517,7 +1533,12 @@ class OpenIDConnectClient
      * @return string
      */
     protected function getNonce() {
-        return $this->getSessionKey('openid_connect_nonce');
+        // modify for using with component in octoberms
+        if ($this->checkExistState()) {
+            return $this->getSessionKey($this->state . '.openid_connect_nonce');
+        } else {
+            return $this->getSessionKey('openid_connect_nonce');
+        }
     }
 
     /**
@@ -1538,6 +1559,17 @@ class OpenIDConnectClient
     protected function setState($state) {
         $this->setSessionKey('openid_connect_state', $state);
         return $state;
+    }
+
+    /**
+     * Add this function for using with component in octobercms
+     *
+     * @param string $val
+     * @return void
+     */
+    public function setStateValue($val) {
+        $this->state = $val;
+        $this->setSessionKey('openid_connect_state', $this->state);
     }
 
     /**
@@ -1670,5 +1702,14 @@ class OpenIDConnectClient
                 break;
         }
 
+    }
+
+    /**
+     * add this function for using with component in octobercms
+     * @return true if $this->state have value | false if $this->state is null or empty
+     */
+    protected function checkExistState()
+    {
+        return ($this->state != null && $this->state != '');
     }
 }
