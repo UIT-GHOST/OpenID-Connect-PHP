@@ -20,9 +20,11 @@
     "autoload" : {
          "classmap": [ "src/"]
     },
-  "config" : {
-    "platform": {
-      "php": "5.4"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config" : {
+        "platform": {
+            "php": "5.4"
+        }
     }
-  }
 }
