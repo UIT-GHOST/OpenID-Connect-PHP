@@ -20,6 +20,12 @@
     "autoload" : {
          "classmap": [ "src/"]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/UIT-GHOST/OpenID-Connect-PHP"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config" : {
