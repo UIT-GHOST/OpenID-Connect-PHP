@@ -14,7 +14,12 @@ A special thanks goes to Justin Richer and Amanda Anganes for their help and sup
 ## Install ##
  1. Install library using composer
 ```
-composer require uit-ghost/openid-connect-php
+- add this into composer.json file:
+"repositories": [{
+    "type": "vcs",
+    "url": "https://github.com/UIT-GHOST/OpenID-Connect-PHP"
+}],
+- run "composer require uit-ghost/openid-connect-php"
 ```
  2. Include composer autoloader
 ```php
