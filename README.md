@@ -19,7 +19,7 @@ A special thanks goes to Justin Richer and Amanda Anganes for their help and sup
     "type": "vcs",
     "url": "https://github.com/UIT-GHOST/OpenID-Connect-PHP"
 }],
-- run "composer require uit-ghost/openid-connect-php"
+- run "composer require uit-ghost/openid-connect-php dev-master"
 ```
  2. Include composer autoloader
 ```php
