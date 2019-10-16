@@ -20,7 +20,7 @@
  *
  */
 
-namespace Jumbojett;
+namespace UIT_GHOST;
 
 /**
  *
