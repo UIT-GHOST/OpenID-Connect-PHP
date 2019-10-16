@@ -1,5 +1,5 @@
 {
-    "name": "uit_ghost/openid-connect-php",
+    "name": "uit-ghost/openid-connect-php",
     "description": "Bare-bones OpenID Connect client",
     "license": "Apache-2.0",
     "require": {
