@@ -14,7 +14,7 @@ A special thanks goes to Justin Richer and Amanda Anganes for their help and sup
 ## Install ##
  1. Install library using composer
 ```
-composer require UIT_GHOST/openid-connect-php
+composer require uit-ghost/openid-connect-php
 ```
  2. Include composer autoloader
 ```php
